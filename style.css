@@ -50,8 +50,18 @@ a:hover{ text-decoration:underline; }
   align-items:center;
   gap:10px;
   font-weight:700;
-  letter-spacing:0.2px;
 }
+
+.brand__avatar{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background-size:cover;
+  background-position:center;
+  border:1px solid var(--border);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
 .brand__dot{
   width:10px; height:10px; border-radius:50%;
   background: linear-gradient(120deg, var(--accent), var(--accent2));
@@ -406,4 +416,5 @@ input:focus, textarea:focus{
   color: var(--accent);
   font-weight: bold;
 }
+
 
