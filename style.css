@@ -53,14 +53,21 @@ a:hover{ text-decoration:underline; }
 }
 
 .brand__avatar{
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  background-size:cover;
-  background-position:center;
-  border:1px solid var(--border);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  position:relative;
 }
+
+.brand__avatar::after{
+  content: attr(data-fallback);
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  color:#081015;
+  background: linear-gradient(120deg, var(--accent), var(--accent2));
+}
+
 
 .brand__dot{
   width:10px; height:10px; border-radius:50%;
@@ -416,5 +423,6 @@ input:focus, textarea:focus{
   color: var(--accent);
   font-weight: bold;
 }
+
 
 
