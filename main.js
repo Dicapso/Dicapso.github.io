@@ -1,5 +1,99 @@
 const projects = [
   {
+    title: "The Secret Life of Animals",
+    tag: "AI Short-form Video",
+    desc:
+      "A viral short-form AI video series concept where animals are portrayed living secret human-like lives, optimized for 9:16 platforms.",
+    tools:
+      "AI video generation tools, AI image tools, structured prompt engineering",
+    prompt:
+      "Create an 8–10 second cinematic vertical AI video showing animals acting like humans in secret moments. High contrast lighting, fast cuts, emotional or mysterious mood. Aspect ratio 9:16.",
+    link: "#"
+  },
+  {
+    title: "From Weak Prompt to Viral Prompt",
+    tag: "Prompt Engineering",
+    desc:
+      "A prompt optimization case study demonstrating how structured prompting dramatically improves AI-generated output quality.",
+    tools:
+      "Large Language Models, AI video/image generators",
+    prompt:
+      "Create a 10-second cinematic vertical AI video of a stealthy cat acting as a secret agent with dramatic lighting, fast cuts, and a strong ending hook.",
+    link: "#"
+  },
+  {
+    title: "AI-Powered Short Content Automation Flow",
+    tag: "AI Automation",
+    desc:
+      "An AI-assisted workflow designed to automate and scale short-form content production from idea to post-ready output.",
+    tools:
+      "AI tools, prompt templates, automation logic",
+    prompt:
+      "Generate a structured content prompt based on an input idea, then produce a short-form AI video and caption optimized for social platforms.",
+    link: "#"
+  },
+  {
+    title: "AI Thumbnails & Visual Concepts",
+    tag: "AI Visual Design",
+    desc:
+      "A visual experimentation project creating multiple AI-generated thumbnails and visuals for the same short-form video concept.",
+    tools:
+      "AI image generation tools, prompt variations, visual testing",
+    prompt:
+      "Create a high-contrast, attention-grabbing thumbnail for a short-form video with clear subject focus.",
+    link: "#"
+  }
+];
+
+function renderProjects() {
+  const grid = document.getElementById("projectsGrid");
+  if (!grid) return;
+
+  grid.innerHTML = "";
+
+  projects.forEach(project => {
+    const card = document.createElement("div");
+    card.className = "card project";
+
+    card.innerHTML = `
+      <div class="project__top">
+        <h3 class="project__title">${project.title}</h3>
+        <span class="badge">${project.tag}</span>
+      </div>
+
+      <p class="project__desc">${project.desc}</p>
+
+      <div class="project__more">
+        <p><b>Tools:</b> ${project.tools}</p>
+        <p><b>Example Prompt:</b> ${project.prompt}</p>
+      </div>
+
+      <div class="project__actions">
+        <button class="btn btn--ghost read-more">Read more</button>
+        ${project.link !== "#" ? `<a class="btn btn--primary" href="${project.link}" target="_blank">View</a>` : ""}
+      </div>
+    `;
+
+    const btn = card.querySelector(".read-more");
+    const more = card.querySelector(".project__more");
+
+    btn.addEventListener("click", () => {
+      const open = more.style.display === "block";
+      more.style.display = open ? "none" : "block";
+      btn.textContent = open ? "Read more" : "Read less";
+    });
+
+    grid.appendChild(card);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderProjects();
+});
+
+
+const projects = [
+  {
     title: "Data Analytics & AI-driven Insights",
     tag: "Analytics",
     desc:
@@ -166,3 +260,4 @@ document.addEventListener("DOMContentLoaded", () => {
   const y = document.getElementById("year");
   if (y) y.textContent = String(new Date().getFullYear());
 });
+
