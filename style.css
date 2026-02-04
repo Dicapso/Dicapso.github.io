@@ -391,3 +391,19 @@ input:focus, textarea:focus{
   }
   .nav__list.is-open{ display:flex; }
 }
+.tool-list{
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.tool-list li{
+  margin-bottom: 6px;
+}
+
+.tool-list li::marker{
+  color: var(--accent);
+  font-weight: bold;
+}
+
