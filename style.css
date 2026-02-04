@@ -1,0 +1,57 @@
+/* Minimal base so page doesn't look broken */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: #0f1417; color: #e8eef2; }
+a { color: inherit; }
+
+/* Quick helpers */
+.muted { opacity: 0.8; }
+
+/* Portfolio cards */
+.portfolio_card{
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(118,158,175,0.35);
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio_img{
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+}
+
+.portfolio_content{
+  padding: 16px;
+}
+
+.portfolio_content h3{
+  margin: 0 0 6px 0;
+  color: #769EAF;
+}
+
+.portfolio_actions{
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Buttons */
+.read-more-btn, .btn_primary{
+  border: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #769EAF;
+  color: #0f1417;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.read-more-btn:hover, .btn_primary:hover{
+  filter: brightness(1.05);
+}
