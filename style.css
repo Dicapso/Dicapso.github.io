@@ -53,8 +53,14 @@ a:hover{ text-decoration:underline; }
 }
 
 .brand__avatar{
-  position:relative;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
 }
+
 
 .brand__avatar::after{
   content: attr(data-fallback);
@@ -423,6 +429,7 @@ input:focus, textarea:focus{
   color: var(--accent);
   font-weight: bold;
 }
+
 
 
 
