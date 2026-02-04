@@ -1,148 +1,168 @@
-// ===== Portfolio data (edit later if you want) =====
-const portfolioItems = [
+const projects = [
   {
-    title: "Mission Impossible: Cat Edition",
-    subtitle: "AI Short Video Concept (9:16, 10s)",
-    desc: "A cinematic and funny spy-style short where the main character is a stealthy cat agent. Built for fast cuts, dramatic lighting, and rewatch value.",
-    tools: "ChatGPT (script & prompts), AI Video Generator (Runway/Sora), AI image tool (concept frames)",
-    prompt: "Create a 10-second cinematic vertical AI video of a stealthy cat as a secret agent. High contrast lighting, fast cuts, smooth camera moves. Mood: mysterious + funny. Aspect ratio 9:16.",
-    image: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1200&q=60",
+    title: "Data Analytics & AI-driven Insights",
+    tag: "Analytics",
+    desc:
+      "Analyzed performance signals and metrics to extract actionable insights and support decision-making. Focused on trends, KPI interpretation, and turning findings into practical next steps.",
+    tools: "KPI analysis, trend detection, reporting/dashboard thinking",
+    prompt:
+      "If needed: Generate a concise summary of KPI movement, probable causes, and suggested next actions. Keep it decision-focused.",
     link: "#"
   },
   {
-    title: "The Secret Life of Animals",
-    subtitle: "AI Viral Shorts Series Concept",
-    desc: "A short-form series concept showing animals living secret human-like lives, designed to hook in the first second and end with a rewatch-worthy twist.",
-    tools: "ChatGPT (concept), AI video tool, AI sound/music tool",
-    prompt: "Create an 8–10 second cinematic AI short showing animals acting like humans in secret moments. Fast pacing, emotional + mysterious vibe, dramatic lighting, 9:16.",
-    image: "https://images.unsplash.com/photo-1501706362039-c6e13d7b7d68?auto=format&fit=crop&w=1200&q=60",
+    title: "AI Automation & Workflow Design",
+    tag: "Automation",
+    desc:
+      "Designed AI-assisted workflows to reduce repetitive tasks and improve efficiency. Built structured prompt logic and repeatable steps that make outputs consistent and scalable.",
+    tools: "Workflow mapping, prompt templates, repeatable process design",
+    prompt:
+      "Create a reusable prompt template that takes input variables and returns a standardized output format. Include constraints, tone, and validation checks.",
     link: "#"
   },
   {
-    title: "AI Product Ad: 10-Second Hook",
-    subtitle: "Performance-style creative concept",
-    desc: "A 10-second AI-generated ad concept for a fictional tech product. Focus: strong hook in 1s, premium look, and a final visual punch.",
-    tools: "ChatGPT (hook + structure), AI image/video tools",
-    prompt: "Create a high-impact 10-second AI product ad. First second must shock or surprise. Clean modern premium lighting. End with a strong visual hook. 9:16.",
-    image: "https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=60",
+    title: "AI Content Creation (Short-form & Visual)",
+    tag: "Creator",
+    desc:
+      "Created short-form AI content with hook-first structure, clear pacing, and iterative refinement. Optimized prompts and visual direction to increase clarity and rewatch value.",
+    tools: "Prompt iteration, story beats, 9:16 structure, visual direction",
+    prompt:
+      "Create a 10-second vertical AI video concept with a hook in the first second, fast cinematic pacing, minimal text, and a strong ending loop.",
     link: "#"
   }
 ];
 
-// ===== Render Portfolio Cards into Swiper container =====
-function renderPortfolio() {
-  const container = document.getElementById("portfolio-container");
-  if (!container) return;
-
-  container.innerHTML = portfolioItems.map(item => `
-    <div class="card-item swiper-slide">
-      <div class="portfolio_card">
-        <div class="portfolio_img" style="background-image:url('${item.image}')"></div>
-        <div class="portfolio_content">
-          <h3>${item.title}</h3>
-          <p class="muted">${item.subtitle}</p>
-          <p>${item.desc}</p>
-
-          <div class="more-points" style="display:none;">
-            <p><b>Tools:</b> ${item.tools}</p>
-            <p><b>Prompt:</b> ${item.prompt}</p>
-          </div>
-
-          <div class="portfolio_actions">
-            <button class="read-more-btn">Read more</button>
-            ${item.link && item.link !== "#" ? `<a class="btn_primary" href="${item.link}" target="_blank">View</a>` : ""}
-          </div>
-        </div>
-      </div>
-    </div>
-  `).join("");
+function el(tag, className) {
+  const e = document.createElement(tag);
+  if (className) e.className = className;
+  return e;
 }
 
-// ===== Read more buttons =====
-function setupReadMoreButtons() {
-  document.querySelectorAll(".read-more-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const parent = btn.closest(".qualification__description") || btn.closest(".portfolio_content");
-      if (!parent) return;
+function renderProjects() {
+  const grid = document.getElementById("projectsGrid");
+  if (!grid) return;
 
-      const more = parent.querySelector(".more-points");
-      if (!more) return;
+  grid.innerHTML = "";
 
-      const isHidden = more.style.display === "none" || more.style.display === "";
-      more.style.display = isHidden ? "block" : "none";
-      btn.textContent = isHidden ? "Read less" : "Read more";
+  projects.forEach((p, idx) => {
+    const card = el("article", "card project");
+
+    const top = el("div", "project__top");
+    const left = el("div");
+    const title = el("h3", "project__title");
+    title.textContent = p.title;
+
+    const badge = el("div", "badge");
+    badge.textContent = p.tag;
+
+    left.appendChild(title);
+    top.appendChild(left);
+    top.appendChild(badge);
+
+    const desc = el("p", "project__desc");
+    desc.textContent = p.desc;
+
+    const more = el("div", "project__more");
+    more.innerHTML = `
+      <p><b>Tools/Concepts:</b> ${escapeHtml(p.tools)}</p>
+      <p><b>Example Prompt:</b> ${escapeHtml(p.prompt)}</p>
+    `;
+
+    const actions = el("div", "project__actions");
+    const btnMore = el("button", "btn btn--ghost");
+    btnMore.type = "button";
+    btnMore.textContent = "Read more";
+    btnMore.addEventListener("click", () => {
+      const open = more.style.display === "block";
+      more.style.display = open ? "none" : "block";
+      btnMore.textContent = open ? "Read more" : "Read less";
+    });
+
+    actions.appendChild(btnMore);
+
+    if (p.link && p.link !== "#") {
+      const view = el("a", "btn btn--primary");
+      view.href = p.link;
+      view.target = "_blank";
+      view.rel = "noreferrer";
+      view.textContent = "View";
+      actions.appendChild(view);
+    }
+
+    card.appendChild(top);
+    card.appendChild(desc);
+    card.appendChild(more);
+    card.appendChild(actions);
+
+    grid.appendChild(card);
+  });
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+// Mobile menu
+function setupMenu() {
+  const toggle = document.getElementById("navToggle");
+  const list = document.getElementById("navList");
+  if (!toggle || !list) return;
+
+  toggle.addEventListener("click", () => {
+    const open = list.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+
+  // Close after clicking a link (mobile)
+  list.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => {
+      list.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
     });
   });
 }
 
-// ===== Swiper init (safe) =====
-function initSwipers() {
-  if (typeof Swiper === "undefined") return;
+// Copy email draft button
+async function setupCopyDraft() {
+  const btn = document.getElementById("copyEmailBtn");
+  const status = document.getElementById("copyStatus");
+  const name = document.getElementById("msgName");
+  const msg = document.getElementById("msgText");
+  if (!btn || !status || !name || !msg) return;
 
-  // Certificates slider
-  const certEl = document.querySelector("#certificates.swiper");
-  if (certEl) {
-    new Swiper("#certificates.swiper", {
-      loop: true,
-      grabCursor: true,
-      spaceBetween: 20,
-      pagination: { el: "#certificates .swiper-pagination", clickable: true },
-      navigation: {
-        nextEl: "#certificates .swiper-button-next",
-        prevEl: "#certificates .swiper-button-prev"
-      },
-      breakpoints: {
-        0: { slidesPerView: 1 },
-        700: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 }
-      }
-    });
-  }
+  btn.addEventListener("click", async () => {
+    const yourName = (name.value || "Your Name").trim();
+    const yourMsg = (msg.value || "Hello Tural, ...").trim();
 
-  // Portfolio slider
-  const portEl = document.querySelector("#portfolio.swiper");
-  if (portEl) {
-    new Swiper("#portfolio.swiper", {
-      loop: true,
-      grabCursor: true,
-      spaceBetween: 20,
-      pagination: { el: "#portfolio .swiper-pagination", clickable: true },
-      navigation: {
-        nextEl: "#portfolio .swiper-button-next",
-        prevEl: "#portfolio .swiper-button-prev"
-      },
-      breakpoints: {
-        0: { slidesPerView: 1 },
-        700: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 }
-      }
-    });
-  }
+    const draft =
+`To: tural.a.zamanli@gmail.com
+Subject: Hello
 
-  // Blog slider
-  const blogEl = document.querySelector("#blog.swiper");
-  if (blogEl) {
-    new Swiper("#blog.swiper", {
-      loop: true,
-      grabCursor: true,
-      spaceBetween: 20,
-      pagination: { el: "#blog .swiper-pagination", clickable: true },
-      navigation: {
-        nextEl: "#blog .swiper-button-next",
-        prevEl: "#blog .swiper-button-prev"
-      },
-      breakpoints: {
-        0: { slidesPerView: 1 },
-        700: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 }
-      }
-    });
-  }
+Hi Tural,
+
+${yourMsg}
+
+Best regards,
+${yourName}`;
+
+    try {
+      await navigator.clipboard.writeText(draft);
+      status.textContent = "Copied! Paste it into your email client ✅";
+    } catch {
+      status.textContent = "Copy failed. Select and copy manually.";
+    }
+  });
 }
 
-// ===== Run =====
 document.addEventListener("DOMContentLoaded", () => {
-  renderPortfolio();
-  setupReadMoreButtons();
-  initSwipers();
+  renderProjects();
+  setupMenu();
+  setupCopyDraft();
+
+  const y = document.getElementById("year");
+  if (y) y.textContent = String(new Date().getFullYear());
 });
