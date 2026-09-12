@@ -217,6 +217,10 @@
   .cred-item:first-of-type{border-top:none;padding-top:0;}
   .cred-title{font-weight:700;font-size:14.5px;}
   .cred-sub{font-size:12.5px;color:var(--text-muted);margin-top:3px;font-family:'JetBrains Mono';}
+  .cred-link{display:block;text-decoration:none;color:inherit;}
+  .cred-link .cred-title{display:flex;align-items:center;gap:6px;}
+  .cred-link:hover .cred-title{color:var(--accent);}
+  .cred-arrow{font-family:'JetBrains Mono';color:var(--accent);font-size:13px;}
   .cred-card-cv{
     border-color:var(--accent);background:var(--accent-soft);
     display:flex;flex-direction:column;height:100%;
@@ -527,8 +531,10 @@
       <div class="cred-card">
         <h3>Sertifikatlar</h3>
         <div class="cred-item">
-          <div class="cred-title">Data Science</div>
-          <div class="cred-sub">Div Academy</div>
+          <a class="cred-link" href="certificates/div-academy-data-science.jpg" target="_blank" rel="noopener">
+            <div class="cred-title">Data Science<span class="cred-arrow">↗</span></div>
+            <div class="cred-sub">Div Academy</div>
+          </a>
         </div>
         <div class="cred-item">
           <div class="cred-title">MS Excel — Qabaqcıl Səviyyə</div>
@@ -537,6 +543,24 @@
         <div class="cred-item">
           <div class="cred-title">1C: Enterprise 8.2 / 8.3</div>
           <div class="cred-sub">ISA Academy</div>
+        </div>
+        <div class="cred-item">
+          <a class="cred-link" href="certificates/udemy-sql-kursu.pdf" target="_blank" rel="noopener">
+            <div class="cred-title">SQL Kursu: Sıfırdan Sektörün Yüksəklərinə<span class="cred-arrow">↗</span></div>
+            <div class="cred-sub">Udemy · 2025</div>
+          </a>
+        </div>
+        <div class="cred-item">
+          <a class="cred-link" href="certificates/udemy-oracle-sql.pdf" target="_blank" rel="noopener">
+            <div class="cred-title">Data Mütəxəssisləri üçün Oracle SQL<span class="cred-arrow">↗</span></div>
+            <div class="cred-sub">Udemy · 2026</div>
+          </a>
+        </div>
+        <div class="cred-item">
+          <a class="cred-link" href="certificates/udemy-excel.pdf" target="_blank" rel="noopener">
+            <div class="cred-title">Data Mütəxəssisləri üçün Microsoft Excel<span class="cred-arrow">↗</span></div>
+            <div class="cred-sub">Udemy · 2025</div>
+          </a>
         </div>
       </div>
       <div class="cred-card">
