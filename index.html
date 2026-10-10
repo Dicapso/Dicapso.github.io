@@ -284,6 +284,16 @@
   .tag:nth-child(4n+3){color:var(--violet);border-color:rgba(167,139,250,0.35);}
   .tag:nth-child(4n){color:var(--pink);border-color:rgba(244,114,182,0.35);}
   .proj-repo{font-family:'JetBrains Mono';font-size:11.5px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:12px;}
+  .series-head{margin:56px 0 22px;display:flex;flex-direction:column;gap:8px;}
+  .series-head h3{font-family:'Archivo';font-weight:800;font-size:clamp(20px,2.4vw,24px);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .series-count{font-family:'JetBrains Mono';font-size:11.5px;font-weight:500;color:var(--accent);border:1px solid rgba(52,211,153,0.35);background:var(--accent-soft);padding:3px 10px;border-radius:20px;}
+  .series-head p{color:var(--text-muted);font-size:14.5px;max-width:70ch;}
+  .proj-grid.series{grid-template-columns:repeat(3,1fr);gap:16px;}
+  .proj-grid.series .proj-card{padding:20px;gap:12px;}
+  .proj-grid.series .proj-title{font-size:15.5px;}
+  .proj-grid.series .proj-desc{font-size:13.5px;}
+  .proj-day{font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.08em;color:var(--amber);}
+  @media (max-width:1100px){ .proj-grid.series{grid-template-columns:repeat(2,1fr);} }
 
   /* ---------- certs / education ---------- */
   .split{display:grid;grid-template-columns:1fr 1fr 0.9fr;gap:22px;align-items:start;}
@@ -345,7 +355,7 @@
     .readout-item:nth-child(1),.readout-item:nth-child(2){border-top:none;}
     .about-grid{grid-template-columns:1fr;}
     .skill-cols{grid-template-columns:1fr;}
-    .proj-grid{grid-template-columns:1fr;}
+    .proj-grid,.proj-grid.series{grid-template-columns:1fr;}
     .split{grid-template-columns:1fr;}
     .contact-box{grid-template-columns:1fr;padding:28px;}
     .wrap{padding:0 20px;}
@@ -632,11 +642,82 @@
           <span class="proj-title" data-i18n="proj8Title">All repositories</span>
           <span class="proj-arrow">↗</span>
         </div>
-        <p class="proj-desc" data-i18n="proj8Desc">All 17 public repositories on my GitHub profile — including SQL, Python, automation and helper-tool projects.</p>
+        <p class="proj-desc" data-i18n="proj8Desc">All 29 public repositories on my GitHub profile, covering SQL, Python, automation and helper-tool projects.</p>
         <div class="proj-stack">
           <span class="tag">GitHub / Dicapso</span>
         </div>
         <div class="proj-repo mono">github.com/Dicapso</div>
+      </a>
+
+    </div>
+
+    <div class="series-head" id="daily-series">
+      <h3><span data-i18n="seriesH3">Daily Data Analytics series</span> <span class="series-count" data-i18n="seriesCount">9 projects</span></h3>
+      <p data-i18n="seriesLede">One end-to-end analytics project per day, each in its own repo: a business question, data-quality checks, KPIs, an executed Jupyter notebook with charts, and a findings &amp; recommendations table. All datasets are synthetic, with a fixed seed, so every result is reproducible.</p>
+    </div>
+    <div class="proj-grid series">
+
+      <a class="proj-card" href="https://github.com/Dicapso/Pharmacy-Market-Basket-Analysis" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="proj-day">DAY 09</span><span class="proj-arrow">↗</span></div>
+        <span class="proj-title">Pharmacy Market Basket Analysis</span>
+        <p class="proj-desc" data-i18n="day9Desc">Apriori written from scratch for a Baku pharmacy chain: association rules filtered with χ² tests and FDR control, true substitutes separated from seasonal effects, and a cross-sell recommender that beats a best-seller list 4× out-of-time.</p>
+        <div class="proj-stack"><span class="tag">Apriori</span><span class="tag">Association Rules</span><span class="tag">SciPy</span><span class="tag">Recommender</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/Dicapso/Delivery-Ops-KPI-Dashboard" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="proj-day">DAY 08</span><span class="proj-arrow">↗</span></div>
+        <span class="proj-title">Delivery Ops KPI Dashboard</span>
+        <p class="proj-desc" data-i18n="day8Desc">SLA analysis for a Baku courier company with an interactive Plotly dashboard and a formatted Excel KPI report. It uses p-chart process control, a risk-adjusted logistic model, a courier funnel plot and what-if scenarios.</p>
+        <div class="proj-stack"><span class="tag">Plotly</span><span class="tag">openpyxl</span><span class="tag">SPC</span><span class="tag">Logistic Regression</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/Dicapso/Baku-Housing-ETL-Pricing" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="proj-day">DAY 07</span><span class="proj-arrow">↗</span></div>
+        <span class="proj-title">Baku Housing — ETL &amp; Pricing Model</span>
+        <p class="proj-desc" data-i18n="day7Desc">A messy Baku listings feed is parsed with regex, validated and loaded into SQLite. A log-linear hedonic model then prices each m² by district, renovation, title deed and metro access, and flags mispriced listings.</p>
+        <div class="proj-stack"><span class="tag">ETL</span><span class="tag">Regex</span><span class="tag">SQLite</span><span class="tag">OLS</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/Dicapso/RFM-Customer-Segmentation" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="proj-day">DAY 06</span><span class="proj-arrow">↗</span></div>
+        <span class="proj-title">RFM Customer Segmentation</span>
+        <p class="proj-desc" data-i18n="day6Desc">Segments supermarket loyalty customers with RFM scoring and K-means (elbow and silhouette), adds a Pareto analysis and turns each segment into a marketing action.</p>
+        <div class="proj-stack"><span class="tag">RFM</span><span class="tag">K-means</span><span class="tag">scikit-learn</span><span class="tag">Pareto</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/Dicapso/Cohort-Retention-LTV-Analysis" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="proj-day">DAY 05</span><span class="proj-arrow">↗</span></div>
+        <span class="proj-title">Cohort Retention &amp; LTV/CAC</span>
+        <p class="proj-desc" data-i18n="day5Desc">Builds monthly cohort retention for a Baku coffee-chain loyalty app, measures the impact of a digital stamp card, fits power-law retention curves and compares 12-month LTV with CAC for each acquisition channel.</p>
+        <div class="proj-stack"><span class="tag">Cohorts</span><span class="tag">LTV / CAC</span><span class="tag">Curve Fitting</span><span class="tag">Seaborn</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/Dicapso/AB-Test-Checkout-Redesign" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="proj-day">DAY 04</span><span class="proj-arrow">↗</span></div>
+        <span class="proj-title">A/B Test — Checkout Redesign</span>
+        <p class="proj-desc" data-i18n="day4Desc">A full readout of a 48K-user food-delivery checkout experiment: SRM check, z- and Welch tests, bootstrap, CUPED, guardrail metrics, segment effects with Holm correction, and a power analysis.</p>
+        <div class="proj-stack"><span class="tag">A/B Testing</span><span class="tag">SciPy</span><span class="tag">CUPED</span><span class="tag">Bootstrap</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/Dicapso/Electricity-Demand-Forecasting" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="proj-day">DAY 03</span><span class="proj-arrow">↗</span></div>
+        <span class="proj-title">Electricity Demand Forecasting</span>
+        <p class="proj-desc" data-i18n="day3Desc">Uses five years of daily national demand to build day-ahead forecasts with calendar, weather and lag features, Ridge and gradient-boosting models compared with naive baselines, and 2026 weather scenarios.</p>
+        <div class="proj-stack"><span class="tag">Time Series</span><span class="tag">Forecasting</span><span class="tag">scikit-learn</span><span class="tag">Pandas</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/Dicapso/Ecommerce-Sales-SQL-Analysis" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="proj-day">DAY 02</span><span class="proj-arrow">↗</span></div>
+        <span class="proj-title">E-Commerce Sales — SQL Analysis</span>
+        <p class="proj-desc" data-i18n="day2Desc">Analyses two years of orders from an online store selling in 8 Azerbaijani cities, entirely in SQLite (CTEs, window functions). It covers seasonality, profit by category, discount impact, cancellations and customer concentration.</p>
+        <div class="proj-stack"><span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">CTEs</span><span class="tag">Window Functions</span></div>
+      </a>
+
+      <a class="proj-card" href="https://github.com/Dicapso/Customer-Churn-Analysis" target="_blank" rel="noopener">
+        <div class="proj-top"><span class="proj-day">DAY 01</span><span class="proj-arrow">↗</span></div>
+        <span class="proj-title">Telecom Customer Churn Analysis</span>
+        <p class="proj-desc" data-i18n="day1Desc">Looks at 7,000 telecom customers to find who churns and why. A churn-risk heat-map and a scikit-learn model with ROC evaluation show where the retention budget should go.</p>
+        <div class="proj-stack"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">scikit-learn</span><span class="tag">EDA</span></div>
       </a>
 
     </div>
@@ -796,7 +877,19 @@
     proj6Desc: "Elektronika pərakəndə satışı və anbar idarəetməsi üçün hazır SQL Server verilənlər bazası — Products, Suppliers, Customers, Orders və Inventory sxemi, nümunə sorğularla birlikdə.",
     proj7Desc: "Python, aiogram və Google Gemini API ilə qurulmuş süni intellekt dəstəkli Telegram botu — analitikadan kənar, avtomatlaşdırma bacarığını göstərən əlavə layihə.",
     proj8Title: "Bütün repolar",
-    proj8Desc: "17 açıq repozitoriyanın tamamı — SQL, Python, avtomatlaşdırma və köməkçi alət layihələri daxil olmaqla GitHub profilimdə yerləşir.",
+    proj8Desc: "GitHub profilimdəki 29 açıq repozitoriyanın hamısı burada: SQL, Python, avtomatlaşdırma və köməkçi alət layihələri.",
+
+    seriesH3: "Gündəlik Data Analitika seriyası", seriesCount: "9 layihə",
+    seriesLede: "Hər gün ayrıca repoda bir tam analitika layihəsi: biznes sualı, data keyfiyyəti yoxlaması, KPI-lar, icra olunmuş Jupyter notebook və qrafiklər, sonda nəticələr və tövsiyələr cədvəli. Bütün data-lar sintetikdir və sabit seed ilə yaradılıb, yəni hər nəticə təkrar alına bilər.",
+    day9Desc: "Bakı aptek şəbəkəsi üçün Apriori alqoritmi sıfırdan yazılıb. Assosiasiya qaydaları χ² testi və FDR nəzarəti ilə süzülüb, həqiqi əvəzedicilər mövsümi effektlərdən ayrılıb. Cross-sell tövsiyə sistemi zaman üzrə ayrılmış testdə ən çox satılanlar siyahısından 4 dəfə yaxşı nəticə verir.",
+    day8Desc: "Bakı kuryer şirkəti üçün SLA analizi, interaktiv Plotly dashboard və formatlanmış Excel KPI hesabatı. p-chart ilə proses nəzarəti, risk düzəlişli logistik model, kuryer funnel plot və what-if ssenariləri istifadə olunub.",
+    day7Desc: "Qarışıq Bakı mənzil elanları regex ilə parse olunur, yoxlanılır və SQLite-a yüklənir. Sonra log-xətti hedonik model m² qiymətini rayon, təmir, çıxarış və metroya yaxınlığa görə hesablayır və qiyməti qeyri-adekvat elanları işarələyir.",
+    day6Desc: "Supermarket loyallıq müştəriləri RFM skorinqi və K-means (elbow, silhouette) ilə seqmentlərə bölünür. Pareto analizi əlavə olunub, hər seqment üçün marketinq addımı müəyyən edilib.",
+    day5Desc: "Bakı kofe şəbəkəsinin loyallıq tətbiqi üçün aylıq kohort retention qurulub. Rəqəmsal möhür kartının təsiri ölçülüb, power-law retention əyriləri qurulub və hər cəlb kanalı üçün 12 aylıq LTV CAC ilə müqayisə edilib.",
+    day4Desc: "48 min istifadəçili çatdırılma tətbiqində checkout eksperimentinin tam hesabatı: SRM yoxlaması, z və Welch testləri, bootstrap, CUPED, guardrail metrikləri, Holm korreksiyası ilə seqment effektləri və power analizi.",
+    day3Desc: "Beş illik gündəlik milli tələbat datası ilə bir gün əvvəldən proqnoz qurulur. Təqvim, hava və lag xüsusiyyətləri istifadə olunur, Ridge və gradient boosting modelləri sadə baseline-larla müqayisə edilir, 2026 üçün hava ssenariləri hazırlanır.",
+    day2Desc: "Azərbaycanın 8 şəhərində satış edən onlayn mağazanın iki illik sifarişləri tamamilə SQLite-da (CTE, pəncərə funksiyaları) təhlil olunur. Mövsümilik, kateqoriya üzrə mənfəət, endirimlərin təsiri, ləğvlər və müştəri konsentrasiyası araşdırılır.",
+    day1Desc: "7.000 telekom müştərisinin məlumatı ilə kimin və niyə getdiyi araşdırılır. Churn risk heat-map-i və ROC ilə qiymətləndirilmiş scikit-learn modeli retention büdcəsinin hara yönəlməli olduğunu göstərir.",
 
     credEyebrow: "Sertifikatlar & Təhsil", credH2: "Etimadnamələr",
     credCertsH3: "Sertifikatlar",
