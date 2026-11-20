@@ -74,6 +74,8 @@ a { color: inherit; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sage); box-shadow: 0 0 0 4px color-mix(in srgb, var(--sage) 22%, transparent); }
 h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; line-height: 1.12; margin: 0; }
 h1 { font-size: clamp(44px, 7vw, 82px); font-weight: 700; }
+.handle { margin: 6px 0 0; font: 500 14px var(--mono); color: var(--muted); }
+.handle b { color: var(--ink-2); font-weight: 500; }
 .role { font: 400 clamp(20px, 2.6vw, 28px)/1.3 var(--serif); font-style: italic; color: var(--accent); margin: 10px 0 22px; }
 .lede { font-size: 18px; color: var(--ink-2); max-width: 54ch; margin: 0 0 30px; }
 .cta { display: flex; flex-wrap: wrap; gap: 12px; }
