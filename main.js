@@ -90,7 +90,7 @@ const WORK = [
     en: "Checks, de-bloats and speeds up Android phones over ADB, and cleans the Windows PC they are plugged into.",
     az: "Android telefonları ADB ilə yoxlayır, yüngülləşdirir, sürətləndirir; Windows-u da təmizləyir.",
     tags: ["PowerShell", "ADB"] },
-  { cat: "ai", repo: "tz-ai", glyph: "TZ",
+  { cat: "ai", repo: "Local-AI", glyph: "TZ",
     title: "TZ AI",
     en: "A local, offline-first AI assistant built on Qwen3, with optional web search.",
     az: "Qwen3 əsasında yerli, oflayn işləyən AI köməkçi, istəyə görə internet axtarışı ilə.",
